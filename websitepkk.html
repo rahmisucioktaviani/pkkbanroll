@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banana Roll</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff8dc;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #ffeb3b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 5px;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #0c0b0b;
+    }
+
+    .popo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 150px;
+      border: 3px dashed #eeea1b;
+      border-radius: 10px;
+      margin-top: 20px;
+      background-color: white;
+      animation: blink 1s infinite;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    @keyframes blink {
+      0% { color: #eeea1b; }
+      50% { color: #ad6d05; }
+      100% { color: #432a02; }
+    }
+
+    .popo h1,
+    .popo h2 {
+      animation: blink 5s infinite;
+      margin: 5px 0;
+    }
+
+    .product-section {
+      margin-top: 30px;
+      color:#ad6d05;
+    }
+
+    .product-description {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 10px;
+      border: 3px dashed #eeea1b;
+      background-color: white;
+      border-radius: 5px;
+      animation: blink 5s infinite;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-description img {
+      max-width:100%;
+      width: 600px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex: 1;
+    }
+
+    .product-description h4 {
+      flex: 2;
+      color: #ad6d05;
+      font-size: 1rem;
+    }
+
+    .flavor-section {
+      margin-top: 40px;
+    }
+
+    .flavor-section h3 {
+      color: #ad6d05;
+      margin-bottom: 15px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: white;
+      border: 2px solid #eeea1b;
+      border-radius: 10px;
+      padding: 15px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card h4 {
+      margin: 10px 0 5px;
+      color: #432a02;
+    }
+
+    .card p {
+      margin: 0 0 10px;
+      color: #6b4f12;
+      font-weight: bold;
+    }
+
+    .card button {
+      background-color: #ffeb3b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .card button:hover {
+      background-color: #e6d300;
+    }
+
+    .cart {
+      margin-top: 30px;
+      padding: 15px;
+      border: 2px dashed #ad6d05;
+      border-radius: 10px;
+      background-color: #fffef5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .cart h2 {
+      margin-top: 0;
+    }
+
+    #cart-items > div {
+      border: 2px solid #eeea1b;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: white;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .container-button {
+      margin-top: 8px;
+    }
+
+    .container-button button {
+      background-color: #ffeb3b;
+      border: none;
+      padding: 6px 10px;
+      margin: 0 4px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container-button button:hover {
+      background-color: #e6d300;
+    }
+
+    footer {
+      background-color: #ffeb3b;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      border-top: 2px solid #e0c200;
+      border-bottom: 2px solid #e0c200;
+      padding: 1rem 0;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .follow-us {
+      color: #432a02;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a img {
+      width: 30px;
+      border-radius: 4px;
+    }
+
+    footer p, footer a {
+      margin: 0.3rem 0;
+      color: #432a02;
+      text-decoration: none;
+    }
+
+    footer a:hover,
+    footer p:hover {
+      color: #1d58d7;
+    }
+
+    .footer-divider {
+      width: 2px;
+      background-color: #e0c200;
+    }
+
+    @media (max-width: 768px) {
+      .product-description {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-divider {
+        display: none;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      nav ul {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.pinimg.com/736x/a0/ca/2a/a0ca2ac97027aa684ae263bc095e1ef2.jpg" alt="Logo toko Banana Roll berbentuk bulat kuning" />
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Beranda</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="popo">
+    <h1>SELAMAT DATANG DI TOKO KAMI</h1>
+    <h2>Rasakan nikmatnya pisang dalam setiap gulungan</h2>
+  </div>
+
+  <div class="product-section" id="produk">
+    <h3>Deskripsi Produk yang Kami Jual</h3>
+    <div class="product-description">
+      <img src="https://i.pinimg.com/736x/23/d2/ad/23d2ade085b20f7bda02b36a167afb21.jpg" alt="Gambar Banana Roll camilan pisang" />
+      <h4>
+        Banana Roll adalah camilan yang mengenyangkan dan praktis. Terbuat dari roti tawar yang digulung dengan isian pisang segar dan selai yang lezat, memberikan perpaduan rasa manis yang pas. Harganya terjangkau dan ramah di kantong, cocok untuk segala kalangan.
+        Dengan berat bersih 237 gram, Banana Roll dapat disimpan di suhu ruang hingga satu hari. Produk ini juga telah dipastikan halal, tanpa kandungan bahan berbahaya seperti minyak babi, sehingga aman dikonsumsi oleh umat Islam.
+      </h4>
+    </div>
+  </div>
+
+  <div class="flavor-section">
+    <h3>Pilih rasa yang Anda inginkan</h3>
+    <div class="card-container" id="productCards"></div>
+
+    <div class="cart">
+      <h2>Keranjang Belanja</h2>
+      <div id="cart-items">
+        <p>Keranjang kosong</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="follow-us">Ikuti Kami</div>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/banana_roll29" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" /></a>
+          <a href="https://www.facebook.com/share/15LeSy4DdB/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook" /></a>
+          <a href="https://www.tiktok.com/@banana_roll_" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046124.png" alt="TikTok" /></a>
+          <a href="https://youtube.com/@bananaroll-x3h" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="YouTube" /></a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-section" id="kontak">
+        <div class="follow-us">Kontak</div>
+        <p>WA: <a href="https://wa.me/6281545689318">0815-4568-9318</a></p>
+        <p>Alamat: <a href="https://maps.app.goo.gl/uixJavwNVKcKkqAk8">Jl. Raya Cikampek-Parakan, Karawang</a></p>
+      </div>
+    </div>
+  </footer>
+<script>
+ let product = [
+  { id: 1, name: "Banana Roll Cokelat", price: 13000, image: "https://i.pinimg.com/736x/7a/c3/1a/7ac31a6d3164c6a1c0d5d68979ab5991.jpg" },
+  { id: 2, name: "Banana Roll Strawberry", price: 13000, image: "https://i.pinimg.com/736x/7e/c8/a1/7ec8a1d15d01a0a78d622dfe1e60b99f.jpg" },
+  { id: 3, name: "Banana Roll Mix", price: 13000, image: "https://i.pinimg.com/736x/22/c8/e8/22c8e8d750b4453cba5d9a1bc4c40ebd.jpg" }
+];
+
+const container = document.getElementById("productCards");
+
+product.forEach((produk) => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="${produk.image}" alt="${produk.name}" />
+    <h4>${produk.name}</h4>
+    <p>Rp. ${produk.price.toLocaleString()}</p>
+    <button onclick="tambahKeranjang(${produk.id})">Tambah ke Keranjang</button>
+  `;
+  container.appendChild(card);
+});
+
+let cart = [];
+
+function tambahKeranjang(id) {
+  let produk_yang_dipilih = product.find(item => item.id === id);
+  let produk_di_keranjang = cart.find(item => item.id === id);
+
+  if (produk_di_keranjang) {
+    produk_di_keranjang.qty += 1;
+  } else {
+    let produk_ke_keranjang = {
+      id: produk_yang_dipilih.id,
+      name: produk_yang_dipilih.name,
+      price: produk_yang_dipilih.price,
+      qty: 1
+    };
+    cart.push(produk_ke_keranjang);
+  }
+
+  updateCart();
+}
+
+function tambahQty(id) {
+  let produk_yang_dipilih = cart.find(data => data.id === id);
+  if (produk_yang_dipilih) {
+    produk_yang_dipilih.qty += 1;
+  }
+  updateCart();
+}
+
+function kurangiQty(id) {
+  let item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty -= 1;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    updateCart();
+  }
+}
+
+function updateCart() {
+  const cartItems = document.getElementById("cart-items");
+  cartItems.innerHTML = "";
+
+  cart.forEach(item => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <h4>${item.name}</h4>
+      <p>${item.price.toLocaleString()} x ${item.qty}</p>
+      <p>Total: Rp. ${(item.price * item.qty).toLocaleString()}</p>
+      <div class="container-button">
+        <button onclick="tambahQty(${item.id})">+</button>
+        <button onclick="kurangiQty(${item.id})">-</button>
+      </div>
+    `;
+    cartItems.append(div);
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const totalElement = document.createElement("div");
+  totalElement.style.marginTop = "20px";
+  totalElement.style.fontWeight = "bold";
+  totalElement.innerHTML = `Total Pesanan: Rp. ${total.toLocaleString()}`;
+  cartItems.append(totalElement);
+
+  const buttonCheckout = document.createElement("button");
+  buttonCheckout.innerText = "Checkout Via Whatsapp";
+  buttonCheckout.onclick = checkoutToWhatsapp;
+  cartItems.append(buttonCheckout);
+}
+
+function checkoutToWhatsapp() {
+  let pesan = "Halo kak, saya mau beli\n";
+  cart.forEach((produk, index) => {
+    pesan += `${index + 1}. ${produk.name} x ${produk.qty} \n`;
+  });
+
+  const encodedMessage = encodeURIComponent(pesan);
+  window.open(`https://wa.me/6281545689318?text=${encodedMessage}`);
+}
+</script>
+</body>
+</html>
